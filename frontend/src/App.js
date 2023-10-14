@@ -15,12 +15,12 @@ function App() {
   return (
     <div className="App">
       <h1>products</h1>
-      {/* {products.map((product) => (
+      {products.map((product) => (
         <div>
-          <p>product.name</p>
-          <p>product.price</p>
+          <p>{product.name}</p>
+          <p>{product.price}</p>
         </div>
-      ))} */}
+      ))}
     </div>
   );
 }
