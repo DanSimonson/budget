@@ -9,8 +9,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 /* routes */
-app.get("/api/budget", (req, res) => {
-  res.send(data);
+app.get("/api/products", (req, res) => {
+  res.send(data.products);
 });
 
 /* server startup */
