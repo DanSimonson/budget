@@ -1,20 +1,32 @@
 require("dotenv").config();
 const express = require("express");
-const { data } = require("./data");
+const mongoose = require("mongoose");
+const categoryRoutes = require("./routes/categories");
 
-/* middleware*/
+// express app
 const app = express();
 
+// middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-/* routes */
-app.get("/api/products", (req, res) => {
-  res.send(data.products);
+app.use((req, res, next) => {
+  console.log(req.path, req.method);
+  next();
 });
 
-/* server startup */
-const port = process.env.PORT || 4000;
-app.listen(port, () => {
-  console.log(`serve at http://localhost:${port}`);
-});
+// routes
+app.use("/api/categories", categoryRoutes);
+
+// connect to db
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("connected to database");
+    // listen to port
+    app.listen(process.env.PORT, () => {
+      console.log("listening for requests on port", process.env.PORT);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
