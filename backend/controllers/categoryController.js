@@ -8,8 +8,6 @@ const getCategories = async (req, res) => {
 };
 
 const getCategory = async (req, res) => {
-  //res.json({ mssg: "GET a single category" });
-  //console.log("req.params: ", req.params);
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({ error: "No such category" });
@@ -24,22 +22,7 @@ const getCategory = async (req, res) => {
   res.status(200).json(category);
 };
 
-// './:id' get one
-// const getCategory = async (req, res) => {
-//   console.log("req.body: ", req.body);
-//   const { id } = req.body;
-
-//   console.log("id: ", id);
-//   const category = await Category.findById(id);
-//   console.log("category: ", category);
-//   if (!category) {
-//     return res.status(404).json({ error: "No such workout" });
-//   }
-
-//   res.status(200).json(category);
-// };
-
-//post: http://localhost:8338/api/categories
+//post
 const createCategory = async (req, res) => {
   const { title, color } = req.body;
 
@@ -50,9 +33,48 @@ const createCategory = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+//delete
+const deleteCategory = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such workout" });
+  }
+
+  const category = await Category.findOneAndDelete({ _id: id });
+
+  if (!category) {
+    return res.status(400).json({ error: "No such category" });
+  }
+
+  res.status(200).json(category);
+};
+//update
+const updateCategory = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such category" });
+  }
+
+  const category = await Category.findOneAndUpdate(
+    { _id: id },
+    {
+      ...req.body,
+    }
+  );
+
+  if (!category) {
+    return res.status(400).json({ error: "No such category" });
+  }
+
+  res.status(200).json(category);
+};
 
 module.exports = {
-  createCategory,
   getCategories,
   getCategory,
+  createCategory,
+  deleteCategory,
+  updateCategory,
 };
