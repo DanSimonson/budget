@@ -1,5 +1,8 @@
 const Category = require("../models/categoryModel");
+const Transaction = require("../models/transactionModel");
 const mongoose = require("mongoose");
+
+/* category logic */
 
 //'./' get all
 const getCategories = async (req, res) => {
@@ -7,6 +10,7 @@ const getCategories = async (req, res) => {
   res.status(200).json(categories);
 };
 
+// get one
 const getCategory = async (req, res) => {
   const { id } = req.params;
   if (!mongoose.Types.ObjectId.isValid(id)) {
@@ -71,10 +75,28 @@ const updateCategory = async (req, res) => {
   res.status(200).json(category);
 };
 
+/* end category logic */
+
+/* transaction logic */
+//post
+const createTransaction = async (req, res) => {
+  const { name, type, amount } = req.body;
+
+  try {
+    const transaction = await Transaction.create({ name, type, amount });
+    res.status(200).json(transaction);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+/* end transaction logic */
+
 module.exports = {
   getCategories,
   getCategory,
   createCategory,
   deleteCategory,
   updateCategory,
+  createTransaction,
 };
