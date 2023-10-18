@@ -126,7 +126,27 @@ const createTransaction = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+// update a workout
+const updateTransaction = async (req, res) => {
+  const { id } = req.params;
 
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such transaction" });
+  }
+
+  const transaction = await Transaction.findOneAndUpdate(
+    { _id: id },
+    {
+      ...req.body,
+    }
+  );
+
+  if (!transaction) {
+    return res.status(400).json({ error: "No such transaction" });
+  }
+
+  res.status(200).json(transaction);
+};
 /* end transaction logic */
 
 module.exports = {
@@ -139,4 +159,5 @@ module.exports = {
   getTransactions,
   getTransaction,
   deleteTransaction,
+  updateTransaction,
 };
