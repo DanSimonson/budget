@@ -78,6 +78,11 @@ const updateCategory = async (req, res) => {
 /* end category logic */
 
 /* transaction logic */
+// get all
+const getTransactions = async (req, res) => {
+  const transaction = await Transaction.find({}).sort({ createdAt: -1 });
+  res.status(200).json(transaction);
+};
 //post
 const createTransaction = async (req, res) => {
   const { name, type, amount } = req.body;
@@ -99,4 +104,5 @@ module.exports = {
   deleteCategory,
   updateCategory,
   createTransaction,
+  getTransactions,
 };

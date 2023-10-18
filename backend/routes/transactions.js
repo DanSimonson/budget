@@ -1,11 +1,15 @@
 const express = require("express");
 //const { createTransaction } = require("../controllers/Controller");
-const { createTransaction } = require("../controllers/Controller");
+const {
+  createTransaction,
+  getTransactions,
+} = require("../controllers/Controller");
 const router = express.Router();
 
 /* routes */
 //get categories
-//router.get("/", getCategories);
+//get categories
+router.get("/", getTransactions);
 //post a category
 router.post("/", createTransaction);
 //get a category
