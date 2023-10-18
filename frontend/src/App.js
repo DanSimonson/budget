@@ -3,13 +3,16 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [transactions, setTransactions] = useState([]);
   useEffect(() => {
-    //fetchData();
+    fetchData();
   }, []);
   const fetchData = async () => {
-    const result = await axios.get("/api/products");
-    setProducts(result.data);
+    let result = await axios.get("/api/categories");
+    setCategories(result.data);
+    result = await axios.get("/api/transactions");
+    setTransactions(result.data);
   };
   //console.log("products: ", products);
   return (
