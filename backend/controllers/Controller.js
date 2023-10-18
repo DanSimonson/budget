@@ -83,6 +83,22 @@ const getTransactions = async (req, res) => {
   const transaction = await Transaction.find({}).sort({ createdAt: -1 });
   res.status(200).json(transaction);
 };
+// get one
+const getTransaction = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "No such transaction" });
+  }
+
+  const transaction = await Transaction.findById(id);
+
+  if (!transaction) {
+    return res.status(404).json({ error: "No such transaction" });
+  }
+
+  res.status(200).json(transaction);
+};
 //post
 const createTransaction = async (req, res) => {
   const { name, type, amount } = req.body;
@@ -105,4 +121,5 @@ module.exports = {
   updateCategory,
   createTransaction,
   getTransactions,
+  getTransaction,
 };

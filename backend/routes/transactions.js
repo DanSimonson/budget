@@ -3,6 +3,7 @@ const express = require("express");
 const {
   createTransaction,
   getTransactions,
+  getTransaction,
 } = require("../controllers/Controller");
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.get("/", getTransactions);
 //post a category
 router.post("/", createTransaction);
 //get a category
-//router.get("/:id", getCategory);
+router.get("/:id", getTransaction);
 //delete a category
 //router.delete("/:id", deleteCategory);
 //update category
