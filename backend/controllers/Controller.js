@@ -99,6 +99,22 @@ const getTransaction = async (req, res) => {
 
   res.status(200).json(transaction);
 };
+//delete
+const deleteTransaction = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ error: "No such transaction" });
+  }
+
+  const transaction = await Transaction.findOneAndDelete({ _id: id });
+
+  if (!transaction) {
+    return res.status(400).json({ error: "No such transaction" });
+  }
+
+  res.status(200).json(transaction);
+};
 //post
 const createTransaction = async (req, res) => {
   const { name, type, amount } = req.body;
@@ -122,4 +138,5 @@ module.exports = {
   createTransaction,
   getTransactions,
   getTransaction,
+  deleteTransaction,
 };

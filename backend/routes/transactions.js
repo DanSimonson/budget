@@ -4,18 +4,20 @@ const {
   createTransaction,
   getTransactions,
   getTransaction,
+  deleteTransaction,
 } = require("../controllers/Controller");
 const router = express.Router();
 
 /* routes */
-//get categories
-//get categories
+
+//get transactions
 router.get("/", getTransactions);
-//post a category
+//post a transaction
 router.post("/", createTransaction);
-//get a category
+//get a transaction
 router.get("/:id", getTransaction);
-//delete a category
+//delete a transaction
+router.delete("/:id", deleteTransaction);
 //router.delete("/:id", deleteCategory);
 //update category
 //router.patch("/:id", updateCategory);
