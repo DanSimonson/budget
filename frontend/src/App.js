@@ -20,26 +20,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-{products.map((product) => (
-        <div>
-          <p>{product.name}</p>
-          <p>{product.price}</p>
-        </div>
-      ))}   
-  fetchData()    
-  const fetchData = async () => {
-    let result = await axios.get("/api/categories");
-    setCategories(result.data);
-    result = await axios.get("/api/transactions");
-    setTransactions(result.data);
-  };    
-  
-  const [categories, setCategories] = useState([]);
-  const [transactions, setTransactions] = useState([]);
-  useEffect(() => {
-    
-  }, []);
-      
-*/
