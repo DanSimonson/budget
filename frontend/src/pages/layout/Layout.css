@@ -1,0 +1,21 @@
+#main {
+  color: #fff;
+  font-family: "Nunito Semibold";
+  text-align: center;
+}
+#content {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(5, minmax(150px, auto));
+  grid-gap: 10px;
+  width: 100%;
+  margin: 0 auto;
+}
+#content div {
+  background: #3bbced;
+  padding: 30px;
+}
+/* #content div:nth-child(even) {
+  background: #777;
+  padding: 30px;
+} */
