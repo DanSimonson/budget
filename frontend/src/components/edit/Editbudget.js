@@ -11,7 +11,7 @@ const EditBudget = ({ setIsEditing }) => {
         <input
           required="required"
           type="number"
-          className="form-control mr-3"
+          className={Editcss.editinput}
           id="name"
           value={value}
           onChange={(event) => setValue(event.target.value)}

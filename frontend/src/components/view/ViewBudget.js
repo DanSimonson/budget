@@ -5,7 +5,7 @@ function ViewBudget({ handleEditClick }) {
   return (
     <>
       <div className={Viewcss.view}>
-        <p>Budget: $100</p>
+        <p className={Viewcss.viewparagraph}>Budget: $100</p>
         <button type="button" className="editbtn" onClick={handleEditClick}>
           Edit
         </button>
