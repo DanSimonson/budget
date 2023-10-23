@@ -3,6 +3,7 @@ import { useGetTransactionsQuery } from "../features/api/apiSlice";
 import EditBudget from "../components/edit/Editbudget";
 import ViewBudget from "../components/view/ViewBudget";
 import Budget from "../components/budget/Budget";
+import Intro from "./Intro";
 import Homecss from "./Home.module.css";
 
 function Home() {
@@ -25,8 +26,8 @@ function Home() {
   return (
     <>
       <main id={Homecss.main}>
-        {/* <p className={Homecss.header}>My Budget Planner</p> */}
         <Budget />
+        <Intro />
         <section id={Homecss.content}>
           <div className={Homecss.row1}>
             {isEditing ? (
@@ -47,12 +48,3 @@ function Home() {
 }
 
 export default Home;
-
-/* <main>
-      <h1>Transaction List</h1>
-      {isLoading ? (
-        <p>loading ...</p>
-      ) : (
-        data.map((d) => <p key={d._id}>{d.name}</p>)
-      )}
-    </main> */
