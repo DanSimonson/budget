@@ -27,15 +27,13 @@ function Home() {
         <p className={Homecss.header}>My Budget Planner</p>
         <section id={Homecss.content}>
           <div className={Homecss.row1}>
-            <div>
-              {isEditing ? (
-                <EditBudget setIsEditing={setIsEditing} />
-              ) : (
-                <ViewBudget handleEditClick={handleEditClick} />
-              )}
-            </div>
+            {isEditing ? (
+              <EditBudget setIsEditing={setIsEditing} />
+            ) : (
+              <ViewBudget handleEditClick={handleEditClick} />
+            )}
           </div>
-          <div className="row2">2</div>
+          <div className={Homecss.row2}>2</div>
           <div className="row3">3</div>
           <div className="row4">4</div>
           <div className="row5">5</div>

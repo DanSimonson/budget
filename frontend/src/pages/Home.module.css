@@ -25,4 +25,12 @@ div #content {
       padding: 30px;
     } */
 .row1 {
+  border: 5px solid yellow;
+  background-color: lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.row2 {
+  border: 5px solid tan;
 }
