@@ -1,12 +1,16 @@
 import React from "react";
+import Viewcss from "./View.module.css";
+//import "./ViewBudget.css";
 
 function ViewBudget({ handleEditClick }) {
   return (
     <>
-      <p>Budget: $100</p>
-      <button type="button" class="editbtn" onClick={handleEditClick}>
-        Edit
-      </button>
+      <div className={Viewcss.view}>
+        <p>Budget: $100</p>
+        <button type="button" className="editbtn" onClick={handleEditClick}>
+          Edit
+        </button>
+      </div>
     </>
   );
 }

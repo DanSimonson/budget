@@ -1,0 +1,7 @@
+div .edit {
+  border: 5px solid green;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  margin: 0 100px;
+}

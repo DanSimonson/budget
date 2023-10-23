@@ -2,19 +2,15 @@ import React, { useState } from "react";
 import { useGetTransactionsQuery } from "../features/api/apiSlice";
 import EditBudget from "../components/edit/Editbudget";
 import ViewBudget from "../components/view/ViewBudget";
+import Homecss from "./Home.module.css";
 
 function Home() {
   const { data, isLoading, error } = useGetTransactionsQuery();
   const [isEditing, setIsEditing] = useState(false);
-  console.log("isEditing: ", isEditing);
+
   const handleEditClick = () => {
     setIsEditing(true);
   };
-
-  //   const handleSaveClick = () => {
-  //     //console.log('isEditing')
-  //     //setIsEditing(false);
-  //   };
 
   if (error) {
     return (
@@ -27,10 +23,10 @@ function Home() {
 
   return (
     <>
-      <main id="main">
-        <title>My Budget Planner</title>
-        <section id="content">
-          <div className="row1">
+      <main id={Homecss.main}>
+        <p className={Homecss.header}>My Budget Planner</p>
+        <section id={Homecss.content}>
+          <div className={Homecss.row1}>
             <div>
               {isEditing ? (
                 <EditBudget setIsEditing={setIsEditing} />

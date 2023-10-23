@@ -1,3 +1,7 @@
+.header {
+  text-align: center;
+  color: black;
+}
 #main {
   color: #fff;
   font-family: "Nunito Semibold";
@@ -11,14 +15,14 @@
   width: 100%;
   margin: 0 auto;
 }
-#content div {
-  background: #3bbced;
-  padding: 30px;
+div #content {
+  /* border: 5px solid salmon; */
+  /* background: #3bbced; 
+    padding: 30px;*/
 }
 /* #content div:nth-child(even) {
-    background: #777;
-    padding: 30px;
-  } */
+      background: #777;
+      padding: 30px;
+    } */
 .row1 {
-  display: grid;
 }
