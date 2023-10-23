@@ -28,10 +28,10 @@ const getCategory = async (req, res) => {
 
 //post
 const createCategory = async (req, res) => {
-  const { title, color } = req.body;
+  const { title, color, amount } = req.body;
 
   try {
-    const category = await Category.create({ title, color });
+    const category = await Category.create({ title, color, amount });
     res.status(200).json(category);
   } catch (error) {
     res.status(400).json({ error: error.message });
