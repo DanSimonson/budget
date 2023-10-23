@@ -1,6 +1,5 @@
 import React from "react";
 import Viewcss from "./View.module.css";
-//import "./ViewBudget.css";
 
 function ViewBudget({ handleEditClick }) {
   return (

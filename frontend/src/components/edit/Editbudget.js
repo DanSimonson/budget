@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import Viewcss from "./Edit.module.css";
+import Editcss from "./Edit.module.css";
 const EditBudget = ({ setIsEditing }) => {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
 
   return (
     <>
-      <div className={Viewcss.edit}>
+      <div className={Editcss.edit}>
         <input
           required="required"
           type="number"
@@ -18,7 +18,7 @@ const EditBudget = ({ setIsEditing }) => {
         />
         <button
           type="button"
-          className="btn btn-primary"
+          className={Editcss.button}
           onClick={() => setIsEditing(false)}
         >
           Save
