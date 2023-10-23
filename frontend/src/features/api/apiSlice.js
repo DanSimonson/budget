@@ -32,6 +32,9 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Transactions"],
     }),
+    getCategories: builder.query({
+      query: () => "/api/categories",
+    }),
   }),
 });
 
@@ -40,6 +43,7 @@ export const {
   useAddTransactionMutation,
   useUpdateTransactionMutation,
   useDeleteTransactionMutation,
+  useGetCategoriesQuery,
 } = apiSlice;
 
 /*  */

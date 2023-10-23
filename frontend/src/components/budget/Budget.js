@@ -1,23 +1,27 @@
 import React from "react";
-
+import { useGetCategoriesQuery } from "../../features/api/apiSlice";
+import Budgetcss from "./Budget.module.css";
 const Budget = () => {
-  const [isEditing, setIsEditing] = useState(false);
+  const { data, isLoading, isSuccess, isError, error } =
+    useGetCategoriesQuery();
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleSaveClick = (value) => {
-    setIsEditing(false);
-  };
+  if (error) {
+    return (
+      <>
+        console.log('error: ', error)
+        <div>Oops, an error occured:</div>;
+      </>
+    );
+  }
 
   return (
     <div>
-      {isEditing ? (
-        <EditBudget handleSaveClick={handleSaveClick} budget={budget} />
+      {isLoading ? (
+        <p>Loading ...</p>
       ) : (
-        // For part 1 render component inline rather than create a seperate one
-        <ViewBudget handleEditClick={handleEditClick} budget={budget} />
+        <p className={Budgetcss.header}>
+          {data[0].title} budget with a limit of ${data[0].amount}
+        </p>
       )}
     </div>
   );

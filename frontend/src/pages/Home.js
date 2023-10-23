@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useGetTransactionsQuery } from "../features/api/apiSlice";
 import EditBudget from "../components/edit/Editbudget";
 import ViewBudget from "../components/view/ViewBudget";
+import Budget from "../components/budget/Budget";
 import Homecss from "./Home.module.css";
 
 function Home() {
@@ -24,7 +25,8 @@ function Home() {
   return (
     <>
       <main id={Homecss.main}>
-        <p className={Homecss.header}>My Budget Planner</p>
+        {/* <p className={Homecss.header}>My Budget Planner</p> */}
+        <Budget />
         <section id={Homecss.content}>
           <div className={Homecss.row1}>
             {isEditing ? (
