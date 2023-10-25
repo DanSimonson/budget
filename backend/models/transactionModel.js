@@ -15,6 +15,10 @@ const transactionSchema = new Schema(
     amount: {
       type: Number,
     },
+    category: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

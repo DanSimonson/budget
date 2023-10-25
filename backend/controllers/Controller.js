@@ -117,10 +117,15 @@ const deleteTransaction = async (req, res) => {
 };
 //post
 const createTransaction = async (req, res) => {
-  const { name, type, amount } = req.body;
+  const { name, type, amount, category } = req.body;
 
   try {
-    const transaction = await Transaction.create({ name, type, amount });
+    const transaction = await Transaction.create({
+      name,
+      type,
+      amount,
+      category,
+    });
     res.status(200).json(transaction);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -129,7 +134,7 @@ const createTransaction = async (req, res) => {
 // update a workout
 const updateTransaction = async (req, res) => {
   const { id } = req.params;
-
+  console.log("transaction id: ", id);
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ error: "No such transaction" });
   }
