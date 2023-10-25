@@ -1,0 +1,29 @@
+.wrap {
+  border: 5px solid green;
+  background: #43a047;
+  color: #fafafa;
+  display: flex;
+  justify-content: space-around;
+}
+.wrap p {
+  color: black;
+}
+.header {
+  text-align: center;
+}
+.contain {
+  border: 5px solid brown;
+  margin: 0 auto;
+  width: 50%;
+}
+
+#content {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(5, minmax(150px, auto));
+  grid-gap: 10px;
+  width: 100%;
+  margin: 0 auto;
+  background: green;
+  height: 300px;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import Viewcss from "./View.module.css";
 
 function ViewBudget({ handleEditClick }) {
+  console.log("handleEditClick: ", handleEditClick);
   return (
     <>
       <div className={Viewcss.view}>

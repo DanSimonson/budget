@@ -15,15 +15,18 @@ const Budget = () => {
   }
 
   return (
-    <div>
-      {isLoading ? (
-        <p>Loading ...</p>
-      ) : (
-        <p className={Budgetcss.header}>
-          {data[0].title} budget with a limit of ${data[0].amount}
-        </p>
-      )}
-    </div>
+    <>
+      <h1>Existing budgets</h1>
+      <div>
+        {isLoading ? (
+          <p>Loading ...</p>
+        ) : (
+          <p className={Budgetcss.header}>
+            {data[0].title} budget with a limit of ${data[0].amount}
+          </p>
+        )}
+      </div>
+    </>
   );
 };
 
