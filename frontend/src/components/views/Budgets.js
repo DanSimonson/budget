@@ -25,10 +25,17 @@ const Budgets = () => {
         ) : (
           <div className={Budgetscss.contain}>
             {data.map((d) => (
-              <div className={Budgetscss.wrap}>
-                <p>Title:{d.title}</p>
-                <p>Amount:{d.amount}</p>
-              </div>
+              <>
+                <div className={Budgetscss.wrap}>
+                  <p>Budget Name: {d.title}</p>
+                  <p>Amount: {d.amount}</p>
+                </div>
+                <div className={Budgetscss.buttondiv}>
+                  <button className={Budgetscss.button25} role="button">
+                    View Details
+                  </button>
+                </div>
+              </>
             ))}
           </div>
         )}
