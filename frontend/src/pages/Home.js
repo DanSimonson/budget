@@ -1,14 +1,19 @@
 import React, { useState } from "react";
-import { useGetTransactionsQuery } from "../features/api/apiSlice";
+import {
+  useGetTransactionsQuery,
+  useGetCategoriesQuery,
+} from "../features/api/apiSlice";
 import EditBudget from "../components/edit/Editbudget";
 import ViewBudget from "../components/view/ViewBudget";
 import Budget from "../components/budget/Budget";
 import Intro from "./Intro";
 import Homecss from "./Home.module.css";
+import GetCategories from "../utilities/GetCategories";
 
 function Home() {
   const { data, isLoading, error } = useGetTransactionsQuery();
   const [isEditing, setIsEditing] = useState(false);
+  let categoriesObj = GetCategories();
 
   const handleEditClick = () => {
     setIsEditing(true);

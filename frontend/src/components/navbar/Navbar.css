@@ -56,10 +56,6 @@ nav a:after {
   pointer-events: none;
 }
 
-/* nav a.active {
-  border-bottom: darkred;
-} */
-
 header .nav-btn {
   padding: 5px;
   cursor: pointer;
