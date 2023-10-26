@@ -1,25 +1,33 @@
 .wrap {
   /* border: 5px solid green; */
-  background: #43a047;
+  border-radius: 5px;
+  background: #2196f3;
   color: #fafafa;
+  font-size: 18px;
+  font-weight: 600;
   display: flex;
   justify-content: space-around;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px 0;
 }
 .wrap p {
   color: #fafafa;
 }
 .header {
   text-align: center;
+  margin: 3rem 0;
 }
 .contain {
-  border: 5px solid brown;
+  /* border: 5px solid brown; */
   margin: 0 auto;
-  width: 50%;
+  width: 35%;
 }
 .buttondiv {
   display: flex;
   justify-content: flex-end;
   background: #43a047;
+  padding: 0 10px 10px 0;
 }
 
 /* #content {
@@ -50,7 +58,7 @@
     Helvetica, Arial, sans-serif;
   font-size: 17px;
   line-height: 100%;
-  margin: 0;
+  margin: 0 0 5px 0;
   outline: 0;
   padding: 11px 15px 12px;
   text-align: center;
