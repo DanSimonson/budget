@@ -21,7 +21,8 @@
 .contain {
   /* border: 5px solid brown; */
   margin: 0 auto;
-  width: 35%;
+  width: 100%;
+  padding: 0 5px;
 }
 .buttondiv {
   display: flex;
@@ -91,4 +92,16 @@
 
 .button25:disabled:hover {
   box-shadow: none;
+}
+
+@media screen and (max-width: 599px) {
+  .wrap {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .button25 {
+    font-size: 1rem;
+    width: 100px;
+  }
 }
