@@ -1,11 +1,12 @@
 import React from "react";
 import { useGetCategoriesQuery } from "../../features/api/apiSlice";
 import Budgetscss from "./Budgets.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Budgets = () => {
   const { data, isLoading, isSuccess, isError, error } =
     useGetCategoriesQuery();
-  console.log("data: ", data);
+  const navigate = useNavigate();
 
   if (error) {
     return (
@@ -29,15 +30,14 @@ const Budgets = () => {
                 <div className={Budgetscss.wrap}>
                   <p>Budget Name: {d.title}</p>
                   <p>Amount: {d.amount}</p>
-                  <button className={Budgetscss.button25} role="button">
+                  <button
+                    className={Budgetscss.button25}
+                    role="button"
+                    onClick={() => navigate(`/ViewBudget/${d._id}`)}
+                  >
                     View Details
                   </button>
                 </div>
-                {/* <div className={Budgetscss.buttondiv}>
-                  <button className={Budgetscss.button25} role="button">
-                    View Details
-                  </button>
-                </div> */}
               </>
             ))}
           </div>

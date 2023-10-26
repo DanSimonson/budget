@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-//import Navbarcss from "./Navbar.module.css";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
@@ -16,7 +15,6 @@ function Navbar() {
       <h3>MARIPOSAWEB</h3>
       <nav ref={navRef}>
         <NavLink to="/">Home</NavLink>
-        <NavLink to="budget">Budget</NavLink>
         <NavLink to="createbudget">Createbudget</NavLink>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
