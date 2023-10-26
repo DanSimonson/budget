@@ -1,5 +1,4 @@
 .wrap {
-  /* border: 5px solid green; */
   border-radius: 5px;
   background: #2196f3;
   color: #fafafa;
@@ -8,7 +7,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 15px;
+  margin: 15px auto 15px auto;
+  max-width: 758px;
   padding: 15px 0;
 }
 .wrap p {
@@ -19,7 +19,6 @@
   margin: 3rem 0;
 }
 .contain {
-  /* border: 5px solid brown; */
   margin: 0 auto;
   width: 100%;
   padding: 0 5px;
@@ -31,21 +30,6 @@
   padding: 0 10px 10px 0;
 }
 
-/* #content {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(5, minmax(150px, auto));
-  grid-gap: 10px;
-  width: 100%;
-  margin: 0 auto;
-  background: green;
-  height: 300px;
-} */
-/*
-<!-- HTML !-->
-<button class="button-25" role="button">Button 25</button>
-
-/* CSS */
 .button25 {
   background-color: #36a9ae;
   background-image: linear-gradient(#37adb2, #329ca0);
