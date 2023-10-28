@@ -1,8 +1,5 @@
 import React, { useState } from "react";
-import {
-  useGetTransactionsQuery,
-  useGetCategoriesQuery,
-} from "../features/api/apiSlice";
+import { useGetTransactionsQuery } from "../features/api/apiSlice";
 import EditBudget from "../components/edit/Editbudget";
 import ViewBudget from "../components/view/ViewBudget";
 import Intro from "./Intro";

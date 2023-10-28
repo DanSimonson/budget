@@ -14,7 +14,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="viewbudget/:budgetid" element={<ViewBudget />} />
-            {/* <Route path="viewbudget/:budgetid" element={<ViewBudget />} /> */}
             <Route path="createbudget" element={<Createbudget />} />
           </Routes>
         </div>

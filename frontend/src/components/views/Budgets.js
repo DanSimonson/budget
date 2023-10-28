@@ -27,10 +27,11 @@ const Budgets = () => {
           <div className={Budgetscss.contain}>
             {data.map((d) => (
               <>
-                <div className={Budgetscss.wrap}>
+                <div className={Budgetscss.wrap} key={d._id}>
                   <p>Budget Name: {d.title}</p>
                   <p>Amount: {d.amount}</p>
                   <button
+                    key={d._id}
                     className={Budgetscss.button25}
                     role="button"
                     onClick={() => navigate(`/ViewBudget/${d._id}`)}
