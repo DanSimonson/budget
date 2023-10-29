@@ -23,6 +23,14 @@ function ViewBudget() {
     "#0097a7",
     "#009688",
     "#ef6c00",
+    "#a1887f",
+    "#ff5722",
+    "#827717",
+    "#388e3c",
+    "#c62828",
+    "#1a237e",
+    "#d81b60",
+    "#607d8b",
   ]);
   const [fArray, setFArray] = useState([]);
   const [index, setIndex] = useState();
