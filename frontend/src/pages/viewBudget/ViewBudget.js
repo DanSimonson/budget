@@ -33,6 +33,8 @@ function ViewBudget() {
     "#607d8b",
   ]);
   const [fArray, setFArray] = useState([]);
+  const [fArrayTwo, setFArrayTwo] = useState([]);
+  const [categoryDivColor, setCategoryDivColor] = useState([]);
   const [index, setIndex] = useState();
   let categoriesObj = GetCategories();
   let foundCategory = [""];
@@ -41,6 +43,7 @@ function ViewBudget() {
     if (myRef.current) {
       myRef.current = false;
       loadRandomColors(0, colorsArray.length - 1);
+      loadRandomColorsTwo(0, colorsArray.length - 1);
     }
   }, []);
 
@@ -62,14 +65,32 @@ function ViewBudget() {
     setFArray(foundColorsArray);
     return foundColorsArray;
   };
+  const loadRandomColorsTwo = (min, max) => {
+    let foundColorsArrayTwo = [""];
+    let num = 0;
+    while (num <= colorsArray.length - 1) {
+      let step1 = max - min + 1;
+      let step2 = Math.random() * step1;
+      let randomIndex = Math.floor(step2) + min;
+      foundColorsArrayTwo.push(colorsArray[randomIndex]);
+      num++;
+    }
+    foundColorsArrayTwo.shift();
+    setFArrayTwo(foundColorsArrayTwo);
+    return foundColorsArrayTwo;
+  };
 
   return (
     <>
       <div className={ViewBudgetcss.contain}>
-        {foundCategory.map((d) => (
+        {foundCategory.map((d, index) => (
           <>
             <h1 className={ViewBudgetcss.header}>Category</h1>
-            <div className={ViewBudgetcss.wrap} key={d._id}>
+            <div
+              className={ViewBudgetcss.wrap}
+              key={d._id}
+              style={{ background: `${fArrayTwo[index]}` }}
+            >
               <p>Budget Title: {d.title}</p>
               <p>Amount: {d.amount}</p>
             </div>
