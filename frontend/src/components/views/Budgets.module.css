@@ -77,9 +77,6 @@
 .button25:disabled:hover {
   box-shadow: none;
 }
-a.navlink {
-  width: 100px;
-}
 
 @media screen and (max-width: 599px) {
   .wrap {
