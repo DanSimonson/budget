@@ -27,21 +27,6 @@ const Budgets = () => {
   ]);
   const [budgetArray, setBudgetArray] = useState([]);
 
-  const loadRandomColors = (min, max) => {
-    let foundColorsArray = [""];
-    let num = 0;
-    while (num <= colorsArray.length - 1) {
-      let step1 = max - min + 1;
-      let step2 = Math.random() * step1;
-      let randomIndex = Math.floor(step2) + min;
-      foundColorsArray.push(colorsArray[randomIndex]);
-      num++;
-    }
-    foundColorsArray.shift();
-    setBudgetArray(foundColorsArray);
-    return foundColorsArray;
-  };
-
   useEffect(() => {
     if (myRef.current) {
       myRef.current = false;
@@ -57,6 +42,25 @@ const Budgets = () => {
       </>
     );
   }
+
+  /* methods to be refactored later for reusability */
+
+  const loadRandomColors = (min, max) => {
+    let foundColorsArray = [""];
+    let num = 0;
+    while (num <= colorsArray.length - 1) {
+      let step1 = max - min + 1;
+      let step2 = Math.random() * step1;
+      let randomIndex = Math.floor(step2) + min;
+      foundColorsArray.push(colorsArray[randomIndex]);
+      num++;
+    }
+    foundColorsArray.shift();
+    setBudgetArray(foundColorsArray);
+    return foundColorsArray;
+  };
+
+  /* end of methods to be refactored later for reusability */
 
   return (
     <>

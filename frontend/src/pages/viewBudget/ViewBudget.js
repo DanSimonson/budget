@@ -9,9 +9,11 @@ import {
   faTrash,
   faEdit,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 import ViewBudgetcss from "./ViewBudget.module.css";
 
 function ViewBudget() {
+  const navigate = useNavigate();
   const myRef = useRef(true);
   const { budgetid } = useParams();
   const { data, isLoading, error } = useGetTransactionsQuery();
@@ -51,6 +53,8 @@ function ViewBudget() {
   let title = foundCategory[0].title;
   let myData = data.filter((el) => el.category === title);
 
+  /* methods to be refactored later for reusability */
+
   const loadRandomColors = (min, max) => {
     let foundColorsArray = [""];
     let num = 0;
@@ -79,6 +83,8 @@ function ViewBudget() {
     setFArrayTwo(foundColorsArrayTwo);
     return foundColorsArrayTwo;
   };
+
+  /* end of methods to be refactored later for reusability */
 
   return (
     <>
@@ -110,7 +116,11 @@ function ViewBudget() {
               <p>name: {foundD.name}</p>
               <p>type: {foundD.type}</p>
               <p>amount: {foundD.amount}</p>
-              <FontAwesomeIcon icon={faEdit} className={ViewBudgetcss.edit} />
+              <FontAwesomeIcon
+                icon={faEdit}
+                className={ViewBudgetcss.edit}
+                onClick={() => navigate(`/UpdateBudget/${foundD._id}`)}
+              />
               <FontAwesomeIcon icon={faTrash} className={ViewBudgetcss.trash} />
             </div>
           </>
