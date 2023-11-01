@@ -8,6 +8,11 @@ export const apiSlice = createApi({
     getTransactions: builder.query({
       query: () => "/api/transactions",
     }),
+    getTransaction: builder.query({
+      query: (transactionid) => ({
+        url: `/api/transactions/${transactionid}`,
+      }),
+    }),
     addTransaction: builder.mutation({
       query: (transaction) => ({
         url: "/api/transactions",
@@ -40,6 +45,7 @@ export const apiSlice = createApi({
 
 export const {
   useGetTransactionsQuery,
+  useGetTransactionQuery,
   useAddTransactionMutation,
   useUpdateTransactionMutation,
   useDeleteTransactionMutation,
