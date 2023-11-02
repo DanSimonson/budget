@@ -7,6 +7,7 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     getTransactions: builder.query({
       query: () => "/api/transactions",
+      providesTags: ["Transaction"],
     }),
     getTransaction: builder.query({
       query: (transactionid) => ({
