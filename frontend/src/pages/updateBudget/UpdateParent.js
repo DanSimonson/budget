@@ -14,7 +14,6 @@ function UpdateParent() {
   } = useGetTransactionQuery(budgetid);
   return (
     <div>
-      <h1>update child</h1>
       <UpdateChildForm transaction={transaction} isLoading={isLoading} />
     </div>
   );
