@@ -21,7 +21,6 @@ function UpdateChildForm({ transaction, isLoading }) {
       [e.target.name]: e.target.value,
     });
   };
-  console.log("value: ", value);
 
   const handleSubmit = () => {};
 
@@ -36,13 +35,46 @@ function UpdateChildForm({ transaction, isLoading }) {
               <legend>
                 <span className={UpdateBudgetcss.number}></span> Budget Info
               </legend>
-              <input
-                type="text"
-                name="category"
-                value={value.category}
-                onChange={handleChange}
-                placeholder={`${transaction.category}`}
-              />
+              <label>
+                <p>Category</p>
+                <input
+                  type="text"
+                  name="category"
+                  value={value.category}
+                  onChange={handleChange}
+                  placeholder={`${transaction.category}`}
+                />
+              </label>
+              <label>
+                <p>Type</p>
+                <input
+                  type="text"
+                  name="type"
+                  value={value.type}
+                  onChange={handleChange}
+                  placeholder={`${transaction.type}`}
+                />
+              </label>
+              <label>
+                <p>Name</p>
+                <input
+                  type="text"
+                  name="name"
+                  value={value.name}
+                  onChange={handleChange}
+                  placeholder={`${transaction.name}`}
+                />
+              </label>
+              <label>
+                <p>Amount</p>
+                <input
+                  type="number"
+                  name="amount"
+                  value={value.amount}
+                  onChange={handleChange}
+                  placeholder={`${transaction.amount}`}
+                />
+              </label>
               <input type="submit" />
             </fieldset>
           </form>
