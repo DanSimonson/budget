@@ -1,4 +1,4 @@
-div .view {
+/* div .view {
   border: 5px solid green;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@ div .view {
   border-radius: 4px;
 }
 button {
-  background-color: #283593; /* Green */
+  
   border: none;
   color: white;
   padding: 15px 32px;
@@ -26,4 +26,4 @@ button {
 }
 .viewparagraph {
   margin-right: 10px;
-}
+} */

@@ -97,7 +97,7 @@ function ViewBudget() {
               key={d._id}
               style={{ background: `${fArrayTwo[index]}` }}
             >
-              <p>Budget Title: {d.title}</p>
+              <p>Budget Category: {d.title}</p>
               <p>Amount: {d.amount}</p>
             </div>
           </>

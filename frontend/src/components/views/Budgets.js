@@ -77,7 +77,7 @@ const Budgets = () => {
                   key={d._id}
                   style={{ background: `${budgetArray[index]}` }}
                 >
-                  <p>Budget Name: {d.title}</p>
+                  <p>Budget Category: {d.title}</p>
                   <p>Amount: {d.amount}</p>
                   <button
                     key={d._id}

@@ -27,21 +27,12 @@ function UpdateChildForm({ transaction, isLoading }) {
   };
 
   const handleSubmit = async (e) => {
-    //e.preventDefault();
-    console.log("transaction: ", transaction);
-    //console.log("submitted!");
-    //console.log("handlesubmit value: ", value);
     setValue({
       ...value,
     });
-    console.log("handlesubmit value: ", value.category);
-    //const [updateTodo] = useUpdateTodoMutation()
-    //onChange={() => updateTodo({ ...todo, completed: !todo.completed })}
-    //console.log("updateTransaction: ", updateTransaction);
     await updateTransaction(value);
   };
-  console.log("outer handlesubmit value: ", value);
-  //onSubmit={handleSubmit}
+  
   return (
     <div>
       {isLoading === true ? (

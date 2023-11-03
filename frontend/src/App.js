@@ -4,7 +4,6 @@ import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
 import Createbudget from "./pages/createBudget/Createbudget";
 import ViewBudget from "./pages/viewBudget/ViewBudget";
-import UpdateBudget from "./pages/updateBudget/UpdateBudget";
 import UpdateParent from "./pages/updateBudget/UpdateParent";
 function App() {
   return (

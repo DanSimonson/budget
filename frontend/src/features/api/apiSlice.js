@@ -52,5 +52,3 @@ export const {
   useDeleteTransactionMutation,
   useGetCategoriesQuery,
 } = apiSlice;
-
-/*  */
