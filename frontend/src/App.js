@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Createbudget from "./pages/createBudget/Createbudget";
 import ViewBudget from "./pages/viewBudget/ViewBudget";
 import UpdateParent from "./pages/updateBudget/UpdateParent";
+import CreateTransaction from "./pages/createTransaction/CreateTransaction";
 function App() {
   return (
     <div className="App">
@@ -15,8 +16,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="viewbudget/:budgetid" element={<ViewBudget />} />
             <Route path="updateparent/:budgetid" element={<UpdateParent />} />
-            {/* <Route path="updatebudget/:budgetid" element={<UpdateBudget />} /> */}
             <Route path="createbudget" element={<Createbudget />} />
+            <Route path="createtransaction" element={<CreateTransaction />} />
           </Routes>
         </div>
       </BrowserRouter>

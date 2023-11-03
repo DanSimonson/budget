@@ -114,7 +114,7 @@ function ViewBudget() {
             >
               <p>category: {foundD.category}</p>
               <p>name: {foundD.name}</p>
-              <p>type: {foundD.type}</p>
+              {/* <p>type: {foundD.type}</p> */}
               <p>amount: {foundD.amount}</p>
               <FontAwesomeIcon
                 icon={faEdit}

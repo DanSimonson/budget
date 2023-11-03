@@ -32,7 +32,7 @@ function UpdateChildForm({ transaction, isLoading }) {
     });
     await updateTransaction(value);
   };
-  
+
   return (
     <div>
       {isLoading === true ? (
@@ -54,7 +54,7 @@ function UpdateChildForm({ transaction, isLoading }) {
                   placeholder={`${transaction.category}`}
                 />
               </label>
-              <label>
+              {/* <label>
                 <p>Type</p>
                 <input
                   type="text"
@@ -63,7 +63,7 @@ function UpdateChildForm({ transaction, isLoading }) {
                   onChange={handleChange}
                   placeholder={`${transaction.type}`}
                 />
-              </label>
+              </label> */}
               <label>
                 <p>Name</p>
                 <input
