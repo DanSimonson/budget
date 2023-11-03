@@ -15,7 +15,6 @@ function UpdateChildForm({ transaction, isLoading }) {
   ]);
 
   const handleChange = (e) => {
-    console.log("transaction: ", transaction);
     setValue({
       ...value,
       id: transaction._id,
