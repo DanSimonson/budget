@@ -1,7 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
+import { useUpdateTransactionMutation } from "../../features/api/apiSlice";
 import UpdateBudgetcss from "./UpdateBudget.module.css";
 
 function UpdateChildForm({ transaction, isLoading }) {
+  const [updateTransaction] = useUpdateTransactionMutation();
   const [value, setValue] = useState([
     {
       id: "",
@@ -13,8 +15,10 @@ function UpdateChildForm({ transaction, isLoading }) {
   ]);
 
   const handleChange = (e) => {
+    console.log("transaction: ", transaction);
     setValue({
       ...value,
+      id: transaction._id,
       [e.target.name]: e.target.value,
       [e.target.name]: e.target.value,
       [e.target.name]: e.target.value,
@@ -22,15 +26,29 @@ function UpdateChildForm({ transaction, isLoading }) {
     });
   };
 
-  const handleSubmit = () => {};
-
+  const handleSubmit = async (e) => {
+    //e.preventDefault();
+    console.log("transaction: ", transaction);
+    //console.log("submitted!");
+    //console.log("handlesubmit value: ", value);
+    setValue({
+      ...value,
+    });
+    console.log("handlesubmit value: ", value.category);
+    //const [updateTodo] = useUpdateTodoMutation()
+    //onChange={() => updateTodo({ ...todo, completed: !todo.completed })}
+    //console.log("updateTransaction: ", updateTransaction);
+    await updateTransaction(value);
+  };
+  console.log("outer handlesubmit value: ", value);
+  //onSubmit={handleSubmit}
   return (
     <div>
       {isLoading === true ? (
         <div>loading...</div>
       ) : (
         <div className={UpdateBudgetcss.formStyle}>
-          <form onSubmit={handleSubmit}>
+          <form>
             <fieldset>
               <legend>
                 <span className={UpdateBudgetcss.number}></span> Budget Info
@@ -75,7 +93,7 @@ function UpdateChildForm({ transaction, isLoading }) {
                   placeholder={`${transaction.amount}`}
                 />
               </label>
-              <input type="submit" />
+              <input type="button" onClick={handleSubmit} />
             </fieldset>
           </form>
         </div>
