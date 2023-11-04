@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({ baseUrl: "/" }),
-  tagTypes: ["Transaction"],
+  tagTypes: ["Category", "Transaction"],
   endpoints: (builder) => ({
     getTransactions: builder.query({
       query: () => "/api/transactions",
@@ -41,6 +41,19 @@ export const apiSlice = createApi({
     getCategories: builder.query({
       query: () => "/api/categories",
     }),
+    getCategory: builder.query({
+      query: (categoryid) => ({
+        url: `/api/categories/${categoryid}`,
+      }),
+    }),
+    addCategory: builder.mutation({
+      query: (category) => ({
+        url: "/api/categories",
+        method: "POST",
+        body: category,
+      }),
+      invalidatesTags: ["Category"],
+    }),
   }),
 });
 
@@ -51,4 +64,6 @@ export const {
   useUpdateTransactionMutation,
   useDeleteTransactionMutation,
   useGetCategoriesQuery,
+  useGetCategoryQuery,
+  useAddCategoryMutation,
 } = apiSlice;

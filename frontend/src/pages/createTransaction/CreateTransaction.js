@@ -23,7 +23,7 @@ function CreateTransaction() {
       [e.target.name]: e.target.value,
     });
   };
-  console.log("value: ", value);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setValue({
@@ -37,7 +37,8 @@ function CreateTransaction() {
       <form>
         <fieldset>
           <legend>
-            <span className={CreateTransactioncss.number}></span> Budget Info
+            <span className={CreateTransactioncss.number}></span> Add
+            Transaction Info
           </legend>
           <label>
             <p>Category</p>
