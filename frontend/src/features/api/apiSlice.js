@@ -28,7 +28,7 @@ export const apiSlice = createApi({
         method: "PATCH",
         body: transaction,
       }),
-      invalidatesTags: ["Todos"],
+      invalidatesTags: ["Transaction"],
     }),
     deleteTransaction: builder.mutation({
       query: ({ id }) => ({
@@ -36,7 +36,7 @@ export const apiSlice = createApi({
         method: "DELETE",
         body: id,
       }),
-      invalidatesTags: ["Transactions"],
+      invalidatesTags: ["Transaction"],
     }),
     getCategories: builder.query({
       query: () => "/api/categories",
