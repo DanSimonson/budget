@@ -91,8 +91,6 @@ function ViewBudget() {
   /* end of methods to be refactored later for reusability */
 
   const deleteItem = async (transactionid) => {
-    //console.log("e.target.name", e.target.name);
-    console.log("deleting transaction with id: ", transactionid);
     await deleteTransaction({ id: transactionid });
   };
 
@@ -144,6 +142,5 @@ function ViewBudget() {
     </>
   );
 }
-//deleteItem(foundD._id);
 
 export default ViewBudget;

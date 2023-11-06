@@ -1,9 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useGetCategoriesQuery } from "../../features/api/apiSlice";
+import {
+  useGetCategoriesQuery,
+  useDeleteCategoryMutation,
+} from "../../features/api/apiSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faPlus,
+  faMinus,
+  faTrash,
+  faEdit,
+} from "@fortawesome/free-solid-svg-icons";
 import Budgetscss from "./Budgets.module.css";
 import { useNavigate } from "react-router-dom";
 
 const Budgets = () => {
+  const [deleteCategory] = useDeleteCategoryMutation();
   const myRef = useRef(true);
   const { data, isLoading, isSuccess, isError, error } =
     useGetCategoriesQuery();
@@ -62,6 +73,11 @@ const Budgets = () => {
 
   /* end of methods to be refactored later for reusability */
 
+  const deleteItem = async (categoryid) => {
+    console.log("categoryid: ", categoryid);
+    await deleteCategory({ id: categoryid });
+  };
+
   return (
     <>
       <div>
@@ -87,6 +103,18 @@ const Budgets = () => {
                   >
                     View Details
                   </button>
+                  <FontAwesomeIcon
+                    icon={faEdit}
+                    className={Budgetscss.edit}
+                    // onClick={() => navigate(`/UpdateParent/${foundD._id}`)}
+                  />
+                  <FontAwesomeIcon
+                    icon={faTrash}
+                    className={Budgetscss.trash}
+                    onClick={() => {
+                      deleteItem(d._id);
+                    }}
+                  />
                 </div>
               </>
             ))}
