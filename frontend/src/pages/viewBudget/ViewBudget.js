@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useGetTransactionsQuery } from "../../features/api/apiSlice";
+import {
+  useGetTransactionsQuery,
+  useDeleteTransactionMutation,
+} from "../../features/api/apiSlice";
 import GetCategories from "../../utilities/GetCategories";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import ViewBudgetcss from "./ViewBudget.module.css";
 
 function ViewBudget() {
+  const [deleteTransaction] = useDeleteTransactionMutation();
   const navigate = useNavigate();
   const myRef = useRef(true);
   const { budgetid } = useParams();
@@ -86,6 +90,12 @@ function ViewBudget() {
 
   /* end of methods to be refactored later for reusability */
 
+  const deleteItem = async (transactionid) => {
+    //console.log("e.target.name", e.target.name);
+    console.log("deleting transaction with id: ", transactionid);
+    await deleteTransaction({ id: transactionid });
+  };
+
   return (
     <>
       <div className={ViewBudgetcss.contain}>
@@ -114,14 +124,19 @@ function ViewBudget() {
             >
               <p>category: {foundD.category}</p>
               <p>name: {foundD.name}</p>
-              {/* <p>type: {foundD.type}</p> */}
               <p>amount: {foundD.amount}</p>
               <FontAwesomeIcon
                 icon={faEdit}
                 className={ViewBudgetcss.edit}
                 onClick={() => navigate(`/UpdateParent/${foundD._id}`)}
               />
-              <FontAwesomeIcon icon={faTrash} className={ViewBudgetcss.trash} />
+              <FontAwesomeIcon
+                icon={faTrash}
+                className={ViewBudgetcss.trash}
+                onClick={() => {
+                  deleteItem(foundD._id);
+                }}
+              />
             </div>
           </>
         ))}
@@ -129,5 +144,6 @@ function ViewBudget() {
     </>
   );
 }
+//deleteItem(foundD._id);
 
 export default ViewBudget;
