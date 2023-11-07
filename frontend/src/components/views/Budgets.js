@@ -74,7 +74,6 @@ const Budgets = () => {
   /* end of methods to be refactored later for reusability */
 
   const deleteItem = async (categoryid) => {
-    console.log("categoryid: ", categoryid);
     await deleteCategory({ id: categoryid });
   };
 

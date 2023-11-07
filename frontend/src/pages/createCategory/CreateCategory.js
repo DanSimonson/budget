@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useAddCategoryMutation } from "../../features/api/apiSlice";
-import Createbudgetcss from "./Createbudget.module.css";
+import CreateCategorycss from "./CreateCategory.module.css";
 
 function Createbudget() {
   const [addCategory] = useAddCategoryMutation();
@@ -30,11 +30,11 @@ function Createbudget() {
   };
 
   return (
-    <div className={Createbudgetcss.formStyle}>
+    <div className={CreateCategorycss.formStyle}>
       <form>
         <fieldset>
           <legend>
-            <span className={Createbudgetcss.number}></span> Add Category Info
+            <span className={CreateCategorycss.number}></span> Add Category Info
           </legend>
           <label>
             <p>Category</p>

@@ -126,7 +126,7 @@ function ViewBudget() {
               <FontAwesomeIcon
                 icon={faEdit}
                 className={ViewBudgetcss.edit}
-                onClick={() => navigate(`/UpdateParent/${foundD._id}`)}
+                onClick={() => navigate(`/UpdateTransaction/${foundD._id}`)}
               />
               <FontAwesomeIcon
                 icon={faTrash}
