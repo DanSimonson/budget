@@ -41,8 +41,8 @@ function UpdateChildForm({ transaction, isLoading }) {
           <form>
             <fieldset>
               <legend>
-                <span className={UpdateTransactioncss.number}></span> Budget
-                Info
+                <span className={UpdateTransactioncss.number}></span> Update
+                Transaction Info
               </legend>
               <label>
                 <p>Category</p>
