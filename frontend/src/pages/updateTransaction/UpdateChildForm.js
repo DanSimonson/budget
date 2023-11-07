@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useUpdateTransactionMutation } from "../../features/api/apiSlice";
-import UpdateBudgetcss from "./UpdateBudget.module.css";
+import UpdateTransactioncss from "./UpdateTransaction.module.css";
 
 function UpdateChildForm({ transaction, isLoading }) {
   const [updateTransaction] = useUpdateTransactionMutation();
@@ -37,11 +37,12 @@ function UpdateChildForm({ transaction, isLoading }) {
       {isLoading === true ? (
         <div>loading...</div>
       ) : (
-        <div className={UpdateBudgetcss.formStyle}>
+        <div className={UpdateTransactioncss.formStyle}>
           <form>
             <fieldset>
               <legend>
-                <span className={UpdateBudgetcss.number}></span> Budget Info
+                <span className={UpdateTransactioncss.number}></span> Update
+                Transaction Info
               </legend>
               <label>
                 <p>Category</p>
@@ -53,16 +54,6 @@ function UpdateChildForm({ transaction, isLoading }) {
                   placeholder={`${transaction.category}`}
                 />
               </label>
-              {/* <label>
-                <p>Type</p>
-                <input
-                  type="text"
-                  name="type"
-                  value={value.type}
-                  onChange={handleChange}
-                  placeholder={`${transaction.type}`}
-                />
-              </label> */}
               <label>
                 <p>Name</p>
                 <input
