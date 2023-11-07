@@ -67,7 +67,7 @@ function CreateTransaction() {
               onChange={handleChange}
             />
           </label>
-          <input type="button" onClick={handleSubmit} />
+          <input type="button" value="Submit" onClick={handleSubmit} />
         </fieldset>
       </form>
     </div>

@@ -54,16 +54,6 @@ function UpdateChildForm({ transaction, isLoading }) {
                   placeholder={`${transaction.category}`}
                 />
               </label>
-              {/* <label>
-                <p>Type</p>
-                <input
-                  type="text"
-                  name="type"
-                  value={value.type}
-                  onChange={handleChange}
-                  placeholder={`${transaction.type}`}
-                />
-              </label> */}
               <label>
                 <p>Name</p>
                 <input
