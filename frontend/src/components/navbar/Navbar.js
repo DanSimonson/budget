@@ -14,9 +14,15 @@ function Navbar() {
     <header>
       <h3>MARIPOSAWEB</h3>
       <nav ref={navRef}>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="createtransaction">Create transaction</NavLink>
-        <NavLink to="createcategory">Create category</NavLink>
+        <NavLink to="/" onClick={showNavbar}>
+          Home
+        </NavLink>
+        <NavLink to="createtransaction" onClick={showNavbar}>
+          Create transaction
+        </NavLink>
+        <NavLink to="createcategory" onClick={showNavbar}>
+          Create category
+        </NavLink>
         <button className="nav-btn nav-close-btn" onClick={showNavbar}>
           <FaTimes />
         </button>
