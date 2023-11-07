@@ -56,6 +56,14 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["Category"],
     }),
+    updateCategory: builder.mutation({
+      query: (category) => ({
+        url: `/api/categories/${category.id}`,
+        method: "PATCH",
+        body: category,
+      }),
+      invalidatesTags: ["Category"],
+    }),
     deleteCategory: builder.mutation({
       query: ({ id }) => ({
         url: `/api/categories/${id}`,
@@ -76,5 +84,6 @@ export const {
   useGetCategoriesQuery,
   useGetCategoryQuery,
   useAddCategoryMutation,
+  useUpdateCategoryMutation,
   useDeleteCategoryMutation,
 } = apiSlice;

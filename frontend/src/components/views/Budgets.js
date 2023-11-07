@@ -45,14 +45,14 @@ const Budgets = () => {
     }
   }, []);
 
-  if (error) {
-    return (
-      <>
-        console.log('error: ', error)
-        <div>Oops, an error occured:</div>;
-      </>
-    );
-  }
+  // if (error) {
+  //   return (
+  //     <>
+  //       console.log('error: ', error)
+  //       <div>Oops, an error occured:</div>;
+  //     </>
+  //   );
+  // }
 
   /* methods to be refactored later for reusability */
 
@@ -104,7 +104,7 @@ const Budgets = () => {
                   <FontAwesomeIcon
                     icon={faEdit}
                     className={Budgetscss.edit}
-                    // onClick={() => navigate(`/UpdateParent/${foundD._id}`)}
+                    onClick={() => navigate(`/UpdateCategory/${d._id}`)}
                   />
                   <FontAwesomeIcon
                     icon={faTrash}

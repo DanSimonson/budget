@@ -2,9 +2,10 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./pages/Home";
-import CreateCategory from "./pages/createCategory/CreateCategory";
 import ViewBudget from "./pages/viewBudget/ViewBudget";
-import UpdateParent from "./pages/updateTransaction/UpdateParent";
+import CreateCategory from "./pages/createCategory/CreateCategory";
+import UpdateCategory from "./pages/updateCategory/UpdateCategoryParent";
+import UpdateTransaction from "./pages/updateTransaction/UpdateParent";
 import CreateTransaction from "./pages/createTransaction/CreateTransaction";
 function App() {
   return (
@@ -18,9 +19,13 @@ function App() {
             <Route path="createtransaction" element={<CreateTransaction />} />
             <Route
               path="updatetransaction/:budgetid"
-              element={<UpdateParent />}
+              element={<UpdateTransaction />}
             />
             <Route path="createcategory" element={<CreateCategory />} />
+            <Route
+              path="updatecategory/:budgetid"
+              element={<UpdateCategory />}
+            />
           </Routes>
         </div>
       </BrowserRouter>
