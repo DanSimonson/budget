@@ -1,4 +1,4 @@
-import { genericApi } from "../genericApi/apiSlice";
+import { genericApi } from "../genericApi/genericApiSlice";
 
 export const extendedApiSlice = genericApi.injectEndpoints({
   endpoints: (builder) => ({

@@ -62,19 +62,3 @@ function Createbudget() {
 }
 
 export default Createbudget;
-
-/* 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faMinus,
-  faTrash,
-  faEdit,
-} from "@fortawesome/free-solid-svg-icons";
-<div>
-        <FontAwesomeIcon icon={faEdit} className={Createbudgetcss.edit} />
-        <FontAwesomeIcon icon={faPlus} className={Createbudgetcss.edit} />
-        <FontAwesomeIcon icon={faMinus} className={Createbudgetcss.edit} />
-        <FontAwesomeIcon icon={faTrash} className={Createbudgetcss.edit} />
-</div>
-*/

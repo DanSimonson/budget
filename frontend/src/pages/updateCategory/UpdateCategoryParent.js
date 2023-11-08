@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-//import { useGetCategoryQuery } from "../../features/api/apiSlice";
-import { useGetCategoryQuery } from "../../features/categories/categorySlice";
+import { useGetCategoryQuery } from "../../features/api/apiSlice";
 import UpdateChildForm from "./UpdateChildForm";
 import { useParams } from "react-router-dom";
 import UpdateCategorycss from "./UpdateCategory.module.css";

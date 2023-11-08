@@ -80,6 +80,9 @@
 .trash {
   cursor: pointer;
 }
+.edit {
+  cursor: pointer;
+}
 
 @media screen and (max-width: 599px) {
   .wrap {
