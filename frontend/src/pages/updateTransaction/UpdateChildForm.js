@@ -74,7 +74,7 @@ function UpdateChildForm({ transaction, isLoading }) {
                   placeholder={`${transaction.amount}`}
                 />
               </label>
-              <input type="button" onClick={handleSubmit} />
+              <input type="button" value="Submit" onClick={handleSubmit} />
             </fieldset>
           </form>
         </div>
