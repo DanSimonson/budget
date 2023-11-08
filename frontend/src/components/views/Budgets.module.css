@@ -87,11 +87,15 @@
 @media screen and (max-width: 599px) {
   .wrap {
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-evenly;
+    align-items: space-between;
+    height: 250px;
   }
   .button25 {
     font-size: 1rem;
     width: 100px;
+  }
+  .edit {
+    margin: 2px 0;
   }
 }
