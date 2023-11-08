@@ -1,5 +1,4 @@
-const RandomColors = (min, max) => {
-  //const [foundArray, setFoundArray] = useState([]);
+const RandomColors = () => {
   let randomColorsArray = [
     "#1e88e5",
     "#3d5afe",
@@ -34,6 +33,8 @@ const RandomColors = (min, max) => {
   ];
   let foundColorsArray = [""];
   let num = 0;
+  let min = 0;
+  let max = 25;
   while (num <= randomColorsArray.length - 1) {
     let step1 = max - min + 1;
     let step2 = Math.random() * step1;
@@ -42,8 +43,6 @@ const RandomColors = (min, max) => {
     num++;
   }
   foundColorsArray.shift();
-  //console.log("foundColorsArray: ", foundColorsArray);
-  //setFoundArray(foundColorsArray);
 
   return foundColorsArray;
 };

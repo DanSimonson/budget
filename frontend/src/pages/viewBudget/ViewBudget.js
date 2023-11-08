@@ -1,101 +1,37 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import {
   useGetTransactionsQuery,
   useDeleteTransactionMutation,
 } from "../../features/api/apiSlice";
 import GetCategories from "../../utilities/GetCategories";
+import RandomColors from "../../utilities/RandomColors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPlus,
-  faMinus,
-  faTrash,
-  faEdit,
-} from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import ViewBudgetcss from "./ViewBudget.module.css";
 
 function ViewBudget() {
+  let myColors = [];
+  let myColorsTwo = [];
   const [deleteTransaction] = useDeleteTransactionMutation();
   const navigate = useNavigate();
-  const myRef = useRef(true);
   const { budgetid } = useParams();
   const { data, isLoading, error } = useGetTransactionsQuery();
-  const [colorsArray, setColorsArray] = useState([
-    "#e91e63",
-    "#9c27b0",
-    "#f44336",
-    "#039be5",
-    "#0097a7",
-    "#009688",
-    "#ef6c00",
-    "#a1887f",
-    "#ff5722",
-    "#827717",
-    "#388e3c",
-    "#c62828",
-    "#1a237e",
-    "#d81b60",
-    "#607d8b",
-  ]);
-  const [fArray, setFArray] = useState([]);
-  const [fArrayTwo, setFArrayTwo] = useState([]);
   const [categoryDivColor, setCategoryDivColor] = useState([]);
   const [index, setIndex] = useState();
   let categoriesObj = GetCategories();
   let foundCategory = [""];
-
-  useEffect(() => {
-    if (myRef.current) {
-      myRef.current = false;
-      loadRandomColors(0, colorsArray.length - 1);
-      loadRandomColorsTwo(0, colorsArray.length - 1);
-    }
-  }, []);
-
   foundCategory = categoriesObj.data.filter((el) => el._id === budgetid);
   let title = foundCategory[0].title;
   let myData = data.filter((el) => el.category === title);
-
-  /* methods to be refactored later for reusability */
-
-  const loadRandomColors = (min, max) => {
-    let foundColorsArray = [""];
-    let num = 0;
-    while (num <= colorsArray.length - 1) {
-      let step1 = max - min + 1;
-      let step2 = Math.random() * step1;
-      let randomIndex = Math.floor(step2) + min;
-      foundColorsArray.push(colorsArray[randomIndex]);
-      num++;
-    }
-    foundColorsArray.shift();
-    setFArray(foundColorsArray);
-    return foundColorsArray;
-  };
-  const loadRandomColorsTwo = (min, max) => {
-    let foundColorsArrayTwo = [""];
-    let num = 0;
-    while (num <= colorsArray.length - 1) {
-      let step1 = max - min + 1;
-      let step2 = Math.random() * step1;
-      let randomIndex = Math.floor(step2) + min;
-      foundColorsArrayTwo.push(colorsArray[randomIndex]);
-      num++;
-    }
-    foundColorsArrayTwo.shift();
-    setFArrayTwo(foundColorsArrayTwo);
-    return foundColorsArrayTwo;
-  };
-
-  /* end of methods to be refactored later for reusability */
+  myColors = RandomColors();
+  myColorsTwo = RandomColors();
 
   const deleteItem = async (transactionid) => {
     await deleteTransaction({ id: transactionid });
   };
-  /*
-   <div className={`${styles.description} ${styles.yellow}`}> 
-   className={ViewBudgetcss.wrap}*/
+
   return (
     <>
       <div className={ViewBudgetcss.contain}>
@@ -105,7 +41,7 @@ function ViewBudget() {
             <div
               className={ViewBudgetcss.wrap}
               key={d._id}
-              style={{ background: `${fArrayTwo[index]}` }}
+              style={{ background: `${myColors[index]}` }}
             >
               <p>Budget Category: {d.title}</p>
               <p>Amount: {d.amount}</p>
@@ -120,7 +56,7 @@ function ViewBudget() {
             <div
               className={ViewBudgetcss.wrap}
               key={index}
-              style={{ background: `${fArray[index]}` }}
+              style={{ background: `${myColorsTwo[index]}` }}
             >
               <p>category: {foundD.category}</p>
               <p>name: {foundD.name}</p>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import {
   useGetCategoriesQuery,
   useDeleteCategoryMutation,
@@ -10,57 +10,60 @@ import {
   faTrash,
   faEdit,
 } from "@fortawesome/free-solid-svg-icons";
+import RandomColors from "../../utilities/RandomColors";
 import Budgetscss from "./Budgets.module.css";
 import { useNavigate } from "react-router-dom";
 
 const Budgets = () => {
+  let myColors = [];
+  myColors = RandomColors();
   const [deleteCategory] = useDeleteCategoryMutation();
-  const myRef = useRef(true);
+  //const myRef = useRef(true);
   const { data, isLoading, isSuccess, isError, error } =
     useGetCategoriesQuery();
   const navigate = useNavigate();
-  const [colorsArray, setColorsArray] = useState([
-    "#e91e63",
-    "#9c27b0",
-    "#f44336",
-    "#039be5",
-    "#0097a7",
-    "#009688",
-    "#ef6c00",
-    "#a1887f",
-    "#ff5722",
-    "#827717",
-    "#388e3c",
-    "#c62828",
-    "#1a237e",
-    "#d81b60",
-    "#607d8b",
-  ]);
-  const [budgetArray, setBudgetArray] = useState([]);
+  // const [colorsArray, setColorsArray] = useState([
+  //   "#e91e63",
+  //   "#9c27b0",
+  //   "#f44336",
+  //   "#039be5",
+  //   "#0097a7",
+  //   "#009688",
+  //   "#ef6c00",
+  //   "#a1887f",
+  //   "#ff5722",
+  //   "#827717",
+  //   "#388e3c",
+  //   "#c62828",
+  //   "#1a237e",
+  //   "#d81b60",
+  //   "#607d8b",
+  // ]);
+  // const [budgetArray, setBudgetArray] = useState([]);
 
-  useEffect(() => {
-    if (myRef.current) {
-      myRef.current = false;
-      loadRandomColors(0, colorsArray.length - 1);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (myRef.current) {
+  //     myRef.current = false;
+  //     loadRandomColors(0, colorsArray.length - 1);
+  //   }
+  // }, []);
 
   /* methods to be refactored later for reusability */
 
-  const loadRandomColors = (min, max) => {
-    let foundColorsArray = [""];
-    let num = 0;
-    while (num <= colorsArray.length - 1) {
-      let step1 = max - min + 1;
-      let step2 = Math.random() * step1;
-      let randomIndex = Math.floor(step2) + min;
-      foundColorsArray.push(colorsArray[randomIndex]);
-      num++;
-    }
-    foundColorsArray.shift();
-    setBudgetArray(foundColorsArray);
-    return foundColorsArray;
-  };
+  // const loadRandomColors = (min, max) => {
+  //   let foundColorsArray = [""];
+  //   let num = 0;
+  //   while (num <= colorsArray.length - 1) {
+  //     let step1 = max - min + 1;
+  //     let step2 = Math.random() * step1;
+  //     let randomIndex = Math.floor(step2) + min;
+  //     foundColorsArray.push(colorsArray[randomIndex]);
+  //     num++;
+  //   }
+  //   foundColorsArray.shift();
+  //   setBudgetArray(foundColorsArray);
+  //   return foundColorsArray;
+  // };
 
   /* end of methods to be refactored later for reusability */
 
@@ -80,7 +83,7 @@ const Budgets = () => {
               <div key={d._id}>
                 <div
                   className={Budgetscss.wrap}
-                  style={{ background: `${budgetArray[index]}` }}
+                  style={{ background: `${myColors[index]}` }}
                   key={d._id}
                 >
                   <p>Budget Category: {d.title}</p>
