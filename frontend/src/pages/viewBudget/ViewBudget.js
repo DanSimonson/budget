@@ -93,7 +93,9 @@ function ViewBudget() {
   const deleteItem = async (transactionid) => {
     await deleteTransaction({ id: transactionid });
   };
-
+  /*
+   <div className={`${styles.description} ${styles.yellow}`}> 
+   className={ViewBudgetcss.wrap}*/
   return (
     <>
       <div className={ViewBudgetcss.contain}>
