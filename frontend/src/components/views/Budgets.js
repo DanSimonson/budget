@@ -1,7 +1,9 @@
 import React from "react";
 import {
   useGetCategoriesQuery,
+  useGetTransactionsQuery,
   useDeleteCategoryMutation,
+  useDeleteTransactionMutation,
 } from "../../features/api/apiSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -13,6 +15,7 @@ const Budgets = () => {
   let myColors = [];
   myColors = RandomColors();
   const [deleteCategory] = useDeleteCategoryMutation();
+  const [deleteTransaction] = useDeleteTransactionMutation();
   const {
     data: categories,
     isLoading,
@@ -20,11 +23,29 @@ const Budgets = () => {
     isError,
     error,
   } = useGetCategoriesQuery();
+  const {
+    data: transactions,
+    isLoading: transactionLoading,
+    //isSuccess,
+    // isError,
+    // error,
+  } = useGetTransactionsQuery();
   const navigate = useNavigate();
 
   const deleteItem = async (categoryid) => {
-    console.log("categories: ", categories);
-    //await deleteCategory({ id: categoryid });
+    let foundCategory = categories.filter((el) => el._id === categoryid);
+    let title = foundCategory[0].title;
+
+    try {
+      await transactions.filter((el) => {
+        if (el.category === title) {
+          deleteTransaction({ id: el._id });
+        }
+      });
+      deleteCategory({ id: categoryid });
+    } catch (error) {
+      console.log("error: ", error.message);
+    }
   };
 
   return (
