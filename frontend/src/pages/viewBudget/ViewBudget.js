@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import {
   useGetTransactionsQuery,
@@ -17,9 +17,7 @@ function ViewBudget() {
   const [deleteTransaction] = useDeleteTransactionMutation();
   const navigate = useNavigate();
   const { budgetid } = useParams();
-  const { data, isLoading, error } = useGetTransactionsQuery();
-  const [categoryDivColor, setCategoryDivColor] = useState([]);
-  const [index, setIndex] = useState();
+  const { data } = useGetTransactionsQuery();
   let categoriesObj = GetCategories();
   let foundCategory = [""];
   foundCategory = categoriesObj.data.filter((el) => el._id === budgetid);

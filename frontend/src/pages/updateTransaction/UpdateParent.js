@@ -4,14 +4,7 @@ import { useParams } from "react-router-dom";
 import UpdateChildForm from "./UpdateChildForm";
 function UpdateParent() {
   const { budgetid } = useParams();
-  const {
-    data: transaction,
-    isSuccess,
-    isError,
-    isLoading,
-    isFetching,
-    error,
-  } = useGetTransactionQuery(budgetid);
+  const { data: transaction, isLoading } = useGetTransactionQuery(budgetid);
   return (
     <div>
       <UpdateChildForm transaction={transaction} isLoading={isLoading} />
