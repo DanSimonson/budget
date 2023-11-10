@@ -1,9 +1,13 @@
 import React, { useState } from "react";
-import { useAddCategoryMutation } from "../../features/api/apiSlice";
+import {
+  useAddCategoryMutation,
+  useGetCategoriesQuery,
+} from "../../features/api/apiSlice";
 import CreateCategorycss from "./CreateCategory.module.css";
 
 function Createbudget() {
   const [addCategory] = useAddCategoryMutation();
+  const { data: categories } = useGetCategoriesQuery();
   const [value, setValue] = useState([
     {
       title: "",
@@ -23,10 +27,24 @@ function Createbudget() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setValue({
-      ...value,
-    });
-    await addCategory(value);
+    let doesExist = false;
+    try {
+      categories.map((category) => {
+        if (category.title === value.title) {
+          doesExist = true;
+        }
+      });
+      if (doesExist === true) {
+        //do nothing" -- does exist is true
+      } else {
+        setValue({
+          ...value,
+        });
+        await addCategory(value);
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
   };
 
   return (

@@ -19,16 +19,10 @@ const Budgets = () => {
   const {
     data: categories,
     isLoading,
-    isSuccess,
-    isError,
-    error,
   } = useGetCategoriesQuery();
   const {
     data: transactions,
     isLoading: transactionLoading,
-    //isSuccess,
-    // isError,
-    // error,
   } = useGetTransactionsQuery();
   const navigate = useNavigate();
 
