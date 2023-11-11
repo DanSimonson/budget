@@ -43,7 +43,7 @@ function CreateTransaction() {
         }
       });
       if (isFound) {
-        window.alert("Duplicate category and name found.");
+        window.alert("Duplicate category and transaction found.");
         setValue({
           category: "",
           type: "",
@@ -51,7 +51,6 @@ function CreateTransaction() {
           amount: 0,
         });
       } else {
-        console.log("no duplicates found");
         setValue({
           ...value,
         });

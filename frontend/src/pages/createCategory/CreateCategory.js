@@ -36,11 +36,22 @@ function Createbudget() {
       });
       if (doesExist === true) {
         //do nothing" -- does exist is true
+        window.alert("Duplicate category found.");
+        setValue({
+          title: "",
+          color: "",
+          amount: 0,
+        });
       } else {
         setValue({
           ...value,
         });
         await addCategory(value);
+        setValue({
+          title: "",
+          color: "",
+          amount: 0,
+        });
       }
     } catch (error) {
       console.log("error: ", error);
