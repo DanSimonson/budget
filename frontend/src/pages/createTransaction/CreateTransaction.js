@@ -1,9 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useAddTransactionMutation } from "../../features/api/apiSlice";
-import { useParams } from "react-router-dom";
+import {
+  useAddTransactionMutation,
+  useGetTransactionsQuery,
+} from "../../features/api/apiSlice";
 import CreateTransactioncss from "./CreateTransaction.module.css";
 
 function CreateTransaction() {
+  const { data: transactions } = useGetTransactionsQuery();
   const [addTransaction] = useAddTransactionMutation();
   const [value, setValue] = useState([
     {
@@ -26,10 +29,43 @@ function CreateTransaction() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setValue({
-      ...value,
-    });
-    await addTransaction(value);
+    let isFound = false;
+    let tempArr = [];
+    try {
+      tempArr = transactions.filter((a) => a.name === value.name);
+      tempArr.map((item) => {
+        if (
+          value.category === item.category &&
+          value.name === item.name &&
+          isFound === false
+        ) {
+          isFound = true;
+        }
+      });
+      if (isFound) {
+        window.alert("Duplicate category and name found.");
+        setValue({
+          category: "",
+          type: "",
+          name: "",
+          amount: 0,
+        });
+      } else {
+        console.log("no duplicates found");
+        setValue({
+          ...value,
+        });
+        await addTransaction(value);
+        setValue({
+          category: "",
+          type: "",
+          name: "",
+          amount: 0,
+        });
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -75,28 +111,3 @@ function CreateTransaction() {
 }
 
 export default CreateTransaction;
-
-/*
-import React, { useRef, useState, useEffect } from "react";
-import { useGetTransactionQuery } from "../../features/api/apiSlice";
-import { useParams } from "react-router-dom";
-import UpdateChildForm from "./UpdateChildForm";
-function UpdateParent() {
-  const { budgetid } = useParams();
-  const {
-    data: transaction,
-    isSuccess,
-    isError,
-    isLoading,
-    isFetching,
-    error,
-  } = useGetTransactionQuery(budgetid);
-  return (
-    <div>
-      <UpdateChildForm transaction={transaction} isLoading={isLoading} />
-    </div>
-  );
-}
-
-export default UpdateParent;
-*/
