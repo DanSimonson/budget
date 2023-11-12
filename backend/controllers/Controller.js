@@ -134,7 +134,7 @@ const createTransaction = async (req, res) => {
 // update a workout
 const updateTransaction = async (req, res) => {
   const { id } = req.params;
-  console.log("transaction id: ", id);
+  
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).json({ error: "No such transaction" });
   }

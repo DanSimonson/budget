@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   useAddCategoryMutation,
   useGetCategoriesQuery,
@@ -15,6 +15,14 @@ function Createbudget() {
       amount: 0,
     },
   ]);
+  const [errors, setErrors] = useState({});
+  const [isSubmitted, setIsSubmit] = useState(false);
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitted) {
+      asyncSubmit();
+    }
+  }, [errors]);
 
   const handleChange = (e) => {
     setValue({
@@ -27,6 +35,8 @@ function Createbudget() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors(validate(value));
+    setIsSubmit(true);
     let doesExist = false;
     try {
       categories.map((category) => {
@@ -46,16 +56,34 @@ function Createbudget() {
         setValue({
           ...value,
         });
-        await addCategory(value);
-        setValue({
-          title: "",
-          color: "",
-          amount: 0,
-        });
       }
     } catch (error) {
       console.log("error: ", error);
     }
+  };
+  const asyncSubmit = async () => {
+    try {
+      await addCategory(value);
+      setValue({
+        title: "",
+        color: "",
+        amount: 0,
+      });
+    } catch (error) {
+      console.log("error: ", error.message);
+    }
+  };
+
+  const validate = (value) => {
+    const formErrors = {};
+    if (!value.title) {
+      formErrors.title = "Title is required";
+    }
+
+    if (!value.amount) {
+      formErrors.amount = "Amount is required";
+    }
+    return formErrors;
   };
 
   return (
@@ -73,7 +101,9 @@ function Createbudget() {
               value={value.title}
               onChange={handleChange}
             />
+            <p className={CreateCategorycss.error}>{errors.title}</p>
           </label>
+
           <label>
             <p>Amount</p>
             <input
@@ -82,6 +112,7 @@ function Createbudget() {
               value={value.amount}
               onChange={handleChange}
             />
+            <p className={CreateCategorycss.error}>{errors.amount}</p>
           </label>
           <input type="button" value="Submit" onClick={handleSubmit} />
         </fieldset>
