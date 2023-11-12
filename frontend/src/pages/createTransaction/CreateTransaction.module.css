@@ -9,6 +9,10 @@
   --textColor: #eee;
 }
 
+.error {
+  color: var(--secondaryColor);
+}
+
 .formStyle {
   max-width: 500px;
   padding: 10px 20px;
@@ -45,7 +49,7 @@
   color: #8a97a0;
   -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03) inset;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .formStyle input[type="text"]:focus,

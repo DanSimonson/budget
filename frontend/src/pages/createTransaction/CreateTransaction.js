@@ -16,6 +16,14 @@ function CreateTransaction() {
       amount: 0,
     },
   ]);
+  const [errors, setErrors] = useState({});
+  const [isSubmitted, setIsSubmit] = useState(false);
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 0 && isSubmitted) {
+      asyncSubmit();
+    }
+  }, [errors]);
 
   const handleChange = (e) => {
     setValue({
@@ -29,6 +37,8 @@ function CreateTransaction() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrors(validate(value));
+    setIsSubmit(true);
     let isFound = false;
     let tempArr = [];
     try {
@@ -43,6 +53,7 @@ function CreateTransaction() {
         }
       });
       if (isFound) {
+        setIsSubmit(false);
         window.alert("Duplicate category and transaction found.");
         setValue({
           category: "",
@@ -54,19 +65,40 @@ function CreateTransaction() {
         setValue({
           ...value,
         });
-        await addTransaction(value);
-        setValue({
-          category: "",
-          type: "",
-          name: "",
-          amount: 0,
-        });
       }
     } catch (error) {
-      console.log(error.message);
+      console.log("error: ", error.message);
+    }
+  };
+  const asyncSubmit = async () => {
+    try {
+      await addTransaction(value);
+      setValue({
+        category: "",
+        type: "",
+        name: "",
+        amount: 0,
+      });
+    } catch (error) {
+      console.log("error: ", error.message);
     }
   };
 
+  const validate = (value) => {
+    const formErrors = {};
+    if (!value.category) {
+      formErrors.category = "Category is required";
+    }
+
+    if (!value.name) {
+      formErrors.name = "Name is required";
+    }
+
+    if (!value.amount) {
+      formErrors.amount = "Amount is required";
+    }
+    return formErrors;
+  };
   return (
     <div className={CreateTransactioncss.formStyle}>
       <form>
@@ -83,6 +115,7 @@ function CreateTransaction() {
               value={value.category}
               onChange={handleChange}
             />
+            <p className={CreateTransactioncss.error}>{errors.category}</p>
           </label>
           <label>
             <p>Name</p>
@@ -92,6 +125,7 @@ function CreateTransaction() {
               value={value.name}
               onChange={handleChange}
             />
+            <p className={CreateTransactioncss.error}>{errors.name}</p>
           </label>
           <label>
             <p>Amount</p>
@@ -101,6 +135,7 @@ function CreateTransaction() {
               value={value.amount}
               onChange={handleChange}
             />
+            <p className={CreateTransactioncss.error}>{errors.amount}</p>
           </label>
           <input type="button" value="Submit" onClick={handleSubmit} />
         </fieldset>

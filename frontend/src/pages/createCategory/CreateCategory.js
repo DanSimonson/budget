@@ -45,8 +45,8 @@ function Createbudget() {
         }
       });
       if (doesExist === true) {
-        //do nothing" -- does exist is true
-        window.alert("Duplicate category found.");
+        setIsSubmit(false);
+        window.alert("Duplicate category found. Form not submitted");
         setValue({
           title: "",
           color: "",
