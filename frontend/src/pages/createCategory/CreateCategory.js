@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   useAddCategoryMutation,
   useGetCategoriesQuery,
@@ -46,12 +48,13 @@ function Createbudget() {
       });
       if (doesExist === true) {
         setIsSubmit(false);
-        window.alert("Duplicate category found. Form not submitted");
+
         setValue({
           title: "",
           color: "",
           amount: 0,
         });
+        warn();
       } else {
         setValue({
           ...value,
@@ -69,6 +72,8 @@ function Createbudget() {
         color: "",
         amount: 0,
       });
+
+      notify();
     } catch (error) {
       console.log("error: ", error.message);
     }
@@ -85,39 +90,79 @@ function Createbudget() {
     }
     return formErrors;
   };
+  const notify = () => {
+    toast.success("🤠 Form submitted successfully!", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+  const warn = () => {
+    toast.error("💥 Duplicate found. Retry submit!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
 
   return (
-    <div className={CreateCategorycss.formStyle}>
-      <form>
-        <fieldset>
-          <legend>
-            <span className={CreateCategorycss.number}></span> Add Category Info
-          </legend>
-          <label>
-            <p>Category</p>
-            <input
-              type="text"
-              name="title"
-              value={value.title}
-              onChange={handleChange}
-            />
-            <p className={CreateCategorycss.error}>{errors.title}</p>
-          </label>
+    <>
+      <div className={CreateCategorycss.formStyle}>
+        <form>
+          <fieldset>
+            <legend>
+              <span className={CreateCategorycss.number}></span> Add Category
+              Info
+            </legend>
+            <label>
+              <p>Category</p>
+              <input
+                type="text"
+                name="title"
+                value={value.title}
+                onChange={handleChange}
+              />
+              <p className={CreateCategorycss.error}>{errors.title}</p>
+            </label>
 
-          <label>
-            <p>Amount</p>
-            <input
-              type="text"
-              name="amount"
-              value={value.amount}
-              onChange={handleChange}
-            />
-            <p className={CreateCategorycss.error}>{errors.amount}</p>
-          </label>
-          <input type="button" value="Submit" onClick={handleSubmit} />
-        </fieldset>
-      </form>
-    </div>
+            <label>
+              <p>Amount</p>
+              <input
+                type="text"
+                name="amount"
+                value={value.amount}
+                onChange={handleChange}
+              />
+              <p className={CreateCategorycss.error}>{errors.amount}</p>
+            </label>
+            <input type="button" value="Submit" onClick={handleSubmit} />
+          </fieldset>
+        </form>
+      </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        style={{ width: "350px" }}
+      />
+    </>
   );
 }
 

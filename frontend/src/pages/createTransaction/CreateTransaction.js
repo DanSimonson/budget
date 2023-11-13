@@ -1,4 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   useAddTransactionMutation,
   useGetTransactionsQuery,
@@ -54,7 +56,7 @@ function CreateTransaction() {
       });
       if (isFound) {
         setIsSubmit(false);
-        window.alert("Duplicate category and transaction found.");
+        warn();
         setValue({
           category: "",
           type: "",
@@ -79,6 +81,7 @@ function CreateTransaction() {
         name: "",
         amount: 0,
       });
+      notify();
     } catch (error) {
       console.log("error: ", error.message);
     }
@@ -99,48 +102,88 @@ function CreateTransaction() {
     }
     return formErrors;
   };
+
+  const notify = () => {
+    toast.success("😄 Form submitted successfully!", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+  const warn = () => {
+    toast.error("💥 Duplicate Found. Retry submission!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
   return (
-    <div className={CreateTransactioncss.formStyle}>
-      <form>
-        <fieldset>
-          <legend>
-            <span className={CreateTransactioncss.number}></span> Add
-            Transaction Info
-          </legend>
-          <label>
-            <p>Category</p>
-            <input
-              type="text"
-              name="category"
-              value={value.category}
-              onChange={handleChange}
-            />
-            <p className={CreateTransactioncss.error}>{errors.category}</p>
-          </label>
-          <label>
-            <p>Name</p>
-            <input
-              type="text"
-              name="name"
-              value={value.name}
-              onChange={handleChange}
-            />
-            <p className={CreateTransactioncss.error}>{errors.name}</p>
-          </label>
-          <label>
-            <p>Amount</p>
-            <input
-              type="number"
-              name="amount"
-              value={value.amount}
-              onChange={handleChange}
-            />
-            <p className={CreateTransactioncss.error}>{errors.amount}</p>
-          </label>
-          <input type="button" value="Submit" onClick={handleSubmit} />
-        </fieldset>
-      </form>
-    </div>
+    <>
+      <div className={CreateTransactioncss.formStyle}>
+        <form>
+          <fieldset>
+            <legend>
+              <span className={CreateTransactioncss.number}></span> Add
+              Transaction Info
+            </legend>
+            <label>
+              <p>Category</p>
+              <input
+                type="text"
+                name="category"
+                value={value.category}
+                onChange={handleChange}
+              />
+              <p className={CreateTransactioncss.error}>{errors.category}</p>
+            </label>
+            <label>
+              <p>Name</p>
+              <input
+                type="text"
+                name="name"
+                value={value.name}
+                onChange={handleChange}
+              />
+              <p className={CreateTransactioncss.error}>{errors.name}</p>
+            </label>
+            <label>
+              <p>Amount</p>
+              <input
+                type="number"
+                name="amount"
+                value={value.amount}
+                onChange={handleChange}
+              />
+              <p className={CreateTransactioncss.error}>{errors.amount}</p>
+            </label>
+            <input type="button" value="Submit" onClick={handleSubmit} />
+          </fieldset>
+        </form>
+      </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        style={{ width: "350px" }}
+      />
+    </>
   );
 }
 
