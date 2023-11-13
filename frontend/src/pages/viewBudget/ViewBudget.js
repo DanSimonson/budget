@@ -5,6 +5,7 @@ import {
   useDeleteTransactionMutation,
 } from "../../features/api/apiSlice";
 import GetCategories from "../../utilities/GetCategories";
+import { Calculate } from "../../utilities/Calculate";
 import RandomColors from "../../utilities/RandomColors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +15,7 @@ import ViewBudgetcss from "./ViewBudget.module.css";
 function ViewBudget() {
   let myColors = [];
   let myColorsTwo = [];
+  let calculation = [];
   const [deleteTransaction] = useDeleteTransactionMutation();
   const navigate = useNavigate();
   const { budgetid } = useParams();
@@ -25,6 +27,7 @@ function ViewBudget() {
   let myData = data.filter((el) => el.category === title);
   myColors = RandomColors();
   myColorsTwo = RandomColors();
+  calculation = Calculate(foundCategory, myData);
 
   const deleteItem = async (transactionid) => {
     await deleteTransaction({ id: transactionid });
@@ -43,6 +46,7 @@ function ViewBudget() {
             >
               <p>Budget Category: {d.title}</p>
               <p>Amount: {d.amount}</p>
+              <p>Remainder: {calculation[0].remainingAmount}</p>
             </div>
           </>
         ))}
