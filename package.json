@@ -1,0 +1,21 @@
+{
+  "name": "budget",
+  "version": "1.0.0",
+  "description": "> This is a full stack (MERN) app with MongoDB, React, Express, Nodejs. This application can create and managing multiple budgets with associated expenses.",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
+    "start": "node backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanSimonson/budget.git"
+  },
+  "author": "Dan Simonson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanSimonson/budget/issues"
+  },
+  "homepage": "https://github.com/DanSimonson/budget#readme"
+}
