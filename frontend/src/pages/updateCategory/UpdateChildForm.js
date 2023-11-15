@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useUpdateCategoryMutation } from "../../features/api/apiSlice";
 import UpdateCategorycss from "./UpdateCategory.module.css";
 
@@ -25,11 +27,55 @@ function UpdateChildForm({ category, isLoading }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setValue({
-      ...value,
-    });
-    await updateCategory(value);
+    try {
+      setValue({
+        ...value,
+      });
+      await updateCategory(value);
+      notify();
+    } catch (error) {
+      console.log("error: ", error.message);
+      const warn = () => {
+        toast.error("💥 Submission error!", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      };
+    }
   };
+
+  const notify = () => {
+    toast.success("😄 Update successfull!", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
+  const warn = () => {
+    toast.error("💥 Submission error!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
   return (
     <div>
       {isLoading === true ? (
@@ -69,6 +115,19 @@ function UpdateChildForm({ category, isLoading }) {
           </form>
         </div>
       )}
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        style={{ width: "350px" }}
+      />
     </div>
   );
 }

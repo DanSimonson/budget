@@ -1,4 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useUpdateTransactionMutation } from "../../features/api/apiSlice";
 import UpdateTransactioncss from "./UpdateTransaction.module.css";
 
@@ -26,10 +28,40 @@ function UpdateChildForm({ transaction, isLoading }) {
   };
 
   const handleSubmit = async (e) => {
-    setValue({
-      ...value,
+    try {
+      setValue({
+        ...value,
+      });
+      await updateTransaction(value);
+      notify();
+    } catch (error) {
+      console.log("error: ", error.message);
+      warn();
+    }
+  };
+  const notify = () => {
+    toast.success("😄 Update successfull!", {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
     });
-    await updateTransaction(value);
+  };
+  const warn = () => {
+    toast.error("💥 Submission error!", {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
   };
 
   return (
@@ -77,10 +109,22 @@ function UpdateChildForm({ transaction, isLoading }) {
               <input type="button" value="Submit" onClick={handleSubmit} />
             </fieldset>
           </form>
+          <ToastContainer
+            position="top-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored"
+            style={{ width: "350px" }}
+          />
         </div>
       )}
     </div>
   );
 }
-
 export default UpdateChildForm;
