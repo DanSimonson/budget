@@ -29,23 +29,4 @@ function Home() {
 
 export default Home;
 
-// <>
-//   <main id={Homecss.main}>
-//     <Budgets />
-//      <Intro />
-//     <section id={Homecss.content}>
-//       <div className={Homecss.row1}>
-//         {isEditing ? (
-//           <EditBudget setIsEditing={setIsEditing} />
-//         ) : (
-//           <ViewBudget handleEditClick={handleEditClick} />
-//         )}
-//       </div>
-//       <div className={Homecss.row2}>2</div>
-//       <div className="row3">3</div>
-//       <div className="row4">4</div>
-//       <div className="row5">5</div>
-//       <div className="row6">6</div>
-//     </section>
-//   </main>
-// </>
+
