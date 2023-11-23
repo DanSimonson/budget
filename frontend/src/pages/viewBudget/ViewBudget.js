@@ -86,11 +86,11 @@ function ViewBudget() {
       <div className={ViewBudgetcss.containPercentage}>
         <div className={ViewBudgetcss.progress}>
           <div
-            style={{ width: `${myUpdateBarPercentage}%` }}
+            style={{ width: `${myUpdateBarPercentage.toFixed(0)}%` }}
             className={ViewBudgetcss.progress__fill}
           >
             <div className={ViewBudgetcss.progress__text}>
-              {myUpdateBarPercentage}% available
+              {myUpdateBarPercentage.toFixed(0)}% available
             </div>
           </div>
         </div>
