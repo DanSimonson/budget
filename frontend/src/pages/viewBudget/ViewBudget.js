@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import {
   useGetTransactionsQuery,
@@ -6,13 +6,15 @@ import {
 } from "../../features/api/apiSlice";
 import GetCategories from "../../utilities/GetCategories";
 import { Calculate } from "../../utilities/Calculate";
+import { UpdateBar } from "../../utilities/UpdateBar";
 import RandomColors from "../../utilities/RandomColors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faEdit, faSleigh } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import ViewBudgetcss from "./ViewBudget.module.css";
 
 function ViewBudget() {
+  const hasRun = useRef(false);
   let myColors = [];
   let myColorsTwo = [];
   let calculation = [];
@@ -28,6 +30,7 @@ function ViewBudget() {
   myColors = RandomColors();
   myColorsTwo = RandomColors();
   calculation = Calculate(foundCategory, myData);
+  let myUpdateBarPercentage = UpdateBar(calculation);
 
   const deleteItem = async (transactionid) => {
     await deleteTransaction({ id: transactionid });
@@ -45,8 +48,8 @@ function ViewBudget() {
               style={{ background: `${myColors[index]}` }}
             >
               <p>Budget Category: {d.title}</p>
-              <p>Amount: {d.amount}</p>
-              <p>Remainder: {calculation[0].remainingAmount}</p>
+              <p>Total: {d.amount}</p>
+              <p>Remaining: {calculation[0].remainingAmount}</p>
             </div>
           </>
         ))}
@@ -78,6 +81,19 @@ function ViewBudget() {
             </div>
           </>
         ))}
+      </div>
+      <p className={ViewBudgetcss.pTitle}>Budget Tracking</p>
+      <div className={ViewBudgetcss.containPercentage}>
+        <div className={ViewBudgetcss.progress}>
+          <div
+            style={{ width: `${myUpdateBarPercentage}%` }}
+            className={ViewBudgetcss.progress__fill}
+          >
+            <div className={ViewBudgetcss.progress__text}>
+              {myUpdateBarPercentage}% available
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

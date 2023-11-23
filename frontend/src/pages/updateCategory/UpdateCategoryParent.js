@@ -1,19 +1,12 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import { useGetCategoryQuery } from "../../features/api/apiSlice";
 import UpdateChildForm from "./UpdateChildForm";
 import { useParams } from "react-router-dom";
-import UpdateCategorycss from "./UpdateCategory.module.css";
+
 function UpdateParent() {
   const { budgetid } = useParams();
 
-  const {
-    data: category,
-    isSuccess,
-    isError,
-    isLoading,
-    isFetching,
-    error,
-  } = useGetCategoryQuery(budgetid);
+  const { data: category, isLoading } = useGetCategoryQuery(budgetid);
 
   return (
     <div>
