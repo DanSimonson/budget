@@ -92,14 +92,14 @@
   width: 758px;
   height: 758px;
   border-radius: 50%;
-  background: #e1ad01;
+  background: #ffa726;
   overflow: hidden;
 }
 
 .progress__fill {
   width: 0%;
   height: 100%;
-  background: #009579;
+  background: #43a047;
   transition: all 0.2s;
 }
 
