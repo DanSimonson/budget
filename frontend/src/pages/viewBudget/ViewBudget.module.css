@@ -89,8 +89,8 @@
 /* progress bars */
 .progress {
   position: relative;
-  width: 758px;
-  height: 758px;
+  width: 500px; 
+  height: 500px; 
   border-radius: 50%;
   background: #ffa726;
   overflow: hidden;
@@ -114,7 +114,7 @@
 .containPercentage {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   height: 800px;
@@ -150,7 +150,10 @@
   }
   .containPercentage {
     flex-direction: row;
-    height: 5rem;
+    height: 400px;
+    align-items: flex-start;
+    justify-content: center;
+    
   }
 
   /* end progress bars */
