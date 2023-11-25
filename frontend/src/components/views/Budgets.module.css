@@ -84,6 +84,12 @@
   cursor: pointer;
 }
 
+.rings {
+  margin: 0 auto;
+  /* border: 5px solid green; */
+  width: 400px;
+}
+
 @media screen and (max-width: 599px) {
   .wrap {
     flex-direction: column;

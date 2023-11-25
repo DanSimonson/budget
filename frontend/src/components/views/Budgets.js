@@ -5,6 +5,7 @@ import {
   useDeleteCategoryMutation,
   useDeleteTransactionMutation,
 } from "../../features/api/apiSlice";
+import { Rings } from "react-loader-spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 import RandomColors from "../../utilities/RandomColors";
@@ -16,14 +17,9 @@ const Budgets = () => {
   myColors = RandomColors();
   const [deleteCategory] = useDeleteCategoryMutation();
   const [deleteTransaction] = useDeleteTransactionMutation();
-  const {
-    data: categories,
-    isLoading,
-  } = useGetCategoriesQuery();
-  const {
-    data: transactions,
-    isLoading: transactionLoading,
-  } = useGetTransactionsQuery();
+  const { data: categories, isLoading } = useGetCategoriesQuery();
+  const { data: transactions, isLoading: transactionLoading } =
+    useGetTransactionsQuery();
   const navigate = useNavigate();
 
   const deleteItem = async (categoryid) => {
@@ -47,7 +43,18 @@ const Budgets = () => {
       <div>
         <h1 className={Budgetscss.header}>Existing budgets</h1>
         {isLoading ? (
-          <p>Loading ...</p>
+          <div className={Budgetscss.rings}>
+            <Rings
+              height="200"
+              width="200"
+              color="#4fa94d"
+              radius="20"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="rings-loading"
+            />
+          </div>
         ) : (
           <div className={Budgetscss.contain}>
             {categories.map((d, index) => (

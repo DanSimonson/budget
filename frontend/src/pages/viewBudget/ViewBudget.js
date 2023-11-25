@@ -41,7 +41,9 @@ function ViewBudget() {
       <div className={ViewBudgetcss.contain}>
         {foundCategory.map((d, index) => (
           <>
-            <h1 className={ViewBudgetcss.header}>Category</h1>
+            <h1 key={d._id} className={ViewBudgetcss.header}>
+              Category
+            </h1>
             <div
               className={ViewBudgetcss.wrap}
               key={d._id}
@@ -60,7 +62,7 @@ function ViewBudget() {
           <>
             <div
               className={ViewBudgetcss.wrap}
-              key={index}
+              key={foundD._id}
               style={{ background: `${myColorsTwo[index]}` }}
             >
               <p>category: {foundD.category}</p>
